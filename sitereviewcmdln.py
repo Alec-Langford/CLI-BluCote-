@@ -31,7 +31,16 @@ def gsb_check(x):
 
 if __name__ == "__main__":
     t=sys.argv[-1]
-    if os.path.isfile(t):
+    if t=="-s":
+        print "ENTERING stdin MODE PRESS CTRL+D TO END!"
+        z=sys.stdin.readlines()
+        c=[urlparse.urlparse(item.strip().replace("hxxp","http")).hostname for item in z]
+        print "stdin Closed"
+        for item in set(c):
+            print check(item)
+            time.sleep(2)
+
+    elif os.path.isfile(t):
         c=[urlparse.urlparse(item.lower().replace("hxxp","http").strip()).hostname for item in open(t, "r").readlines()]
         for item in set(c):
             print check(item)
