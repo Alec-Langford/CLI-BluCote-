@@ -1,3 +1,4 @@
+#!/usr/bin/python
 import sys, os, bs4, simplejson
 import requests, time,urlparse
 
