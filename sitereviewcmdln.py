@@ -16,7 +16,7 @@ def check(x):
         b = bs4.BeautifulSoup(i["categorization"]).get_text()
         return (i["url"] + ": " + b )
     except KeyError:
-        return r.content
+        return r.content,repr(x)
 
 
 def gsb_check(x):
@@ -38,7 +38,7 @@ if __name__ == "__main__":
 
 
     p=os.getcwd()+"/"+t
-    print p
+    #print p
     p=os.path.isfile(p)
 
 
@@ -48,7 +48,7 @@ if __name__ == "__main__":
         c=[urlparse.urlparse(item.strip().replace("hxxp","http")).hostname for item in map(urlfix,z)]
         print "stdin Closed"
         for item in set(c):
-            print item
+            #print item
             print check(item)
             time.sleep(2)
 
