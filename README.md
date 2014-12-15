@@ -7,5 +7,5 @@ Usage:
 
 -s    Read from stdin
 
-python sitereviewcmdln.py [Site|filename|-s]
+python sitereviewcmdln.py [Site|filename|-s|-h]
 
