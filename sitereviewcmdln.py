@@ -27,24 +27,40 @@ def gsb_check(x):
     return bool(r.text)
 
 
+def urlfix(x):
+    if x.startswith("http"):
+        return x
+    else:return "http://"+x
 
 
 if __name__ == "__main__":
     t=sys.argv[-1]
+
+
+    p=os.getcwd()+"/"+t
+    print p
+    p=os.path.isfile(p)
+
+
     if t=="-s":
         print "ENTERING stdin MODE PRESS CTRL+D TO END!"
         z=sys.stdin.readlines()
-        c=[urlparse.urlparse(item.strip().replace("hxxp","http")).hostname for item in z]
+        c=[urlparse.urlparse(item.strip().replace("hxxp","http")).hostname for item in map(urlfix,z)]
         print "stdin Closed"
         for item in set(c):
+            print item
             print check(item)
             time.sleep(2)
 
-    elif os.path.isfile(t):
-        c=[urlparse.urlparse(item.lower().replace("hxxp","http").strip()).hostname for item in open(t, "r").readlines()]
+    elif p:
+        z=open(t, "r").readlines()
+        c=[urlparse.urlparse(item.strip().replace("hxxp","http")).hostname for item in map(urlfix,z)]
+        #c=[item for item in open(t, "r").readlines()]
         for item in set(c):
+            #print item.strip()
             print check(item)
             time.sleep(2)
 
     else:
+
         print check(t)
