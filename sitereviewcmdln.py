@@ -38,8 +38,25 @@ if __name__ == "__main__":
 
 
     p=os.getcwd()+"/"+t
-    #print p
     p=os.path.isfile(p)
+
+    if t=="-h":
+        print """
+        Usage Cases:
+
+        Single site:
+        sitereviewcmdln.py google.com
+
+        File(One domain per line):
+        sitereviewcmdln.py domains.txt
+
+        STDin read:
+        sitereviewcmdln.py -s
+
+        Help:
+        sitereviewcmdln.py -h
+        """
+
 
 
     if t=="-s":
