@@ -69,7 +69,13 @@ if __name__ == "__main__":
         z=sys.stdin.readlines()
         c=[urlparse.urlparse(urlfix(item).strip()).hostname for item in z if item]
         print "\nstdin Closed"
-        for item in set(c):
+        uc=[]
+        for item in c:
+            if item not in uc:
+                uc.append(item)
+
+
+        for item in uc:
 
             print check(item)
             time.sleep(2)
@@ -78,11 +84,18 @@ if __name__ == "__main__":
         z=open(t, "r").readlines()
         c=[urlparse.urlparse(urlfix(item).strip()).hostname for item in z if item]
         #c=[item for item in open(t, "r").readlines()]
-        for item in set(c):
+
+
+        uc=[]
+        for item in c:
+            if item not in uc:
+                uc.append(item)
+        for item in uc:
             #print item.strip()
             print check(item)
             time.sleep(2)
 
     else:
 
-        print check(t)
+        r=check(t)
+        print r
