@@ -75,10 +75,11 @@ if __name__ == "__main__":
                 uc.append(item)
 
 
-        for item in uc:
-
+        for i,item in enumerate(uc):
+            if i+1%10==0:
+                raw_input("enter to continue")
             print check(item)
-            time.sleep(2)
+            time.sleep(5)
 
     elif p:
         z=open(t, "r").readlines()
@@ -93,7 +94,7 @@ if __name__ == "__main__":
         for item in uc:
             #print item.strip()
             print check(item)
-            time.sleep(2)
+            time.sleep(5)
 
     else:
 
